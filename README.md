@@ -1,8 +1,16 @@
 # Flight_data_end_to_end_data_engineer_project **Draft 
 Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and Unity Catalog. Developing a dynamic Medallion Architecture with automated data quality gates and incremental loading.
 
+## Technologies
 
-#Process Breakdown 
+* **Cloud Data Platform:** Databricks (PySpark, Databricks SQL)
+* **Data Transformation & Modeling:** dbt Cloud (SQL, Jinja)
+* **Version Control:** GitHub
+
+* * **Storage / Lakehouse:** Delta Lake (Bronze, Silver, Gold Layers)
+* **Data Architecture:** Medallion Architecture, Kimball Star Schema
+
+# Process Breakdown 
 
 [Source Data] ➔ [Bronze (Raw)] ➔ [Silver (Cleansed)] ➔ [Gold (Star Schema)] ➔ [dbt Transformation]
 
