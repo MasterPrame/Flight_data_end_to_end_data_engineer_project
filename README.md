@@ -10,7 +10,7 @@ Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and
 
 # Process Breakdown 
 
-[Source Data] ➔ [Bronze (Raw)] ➔ [Silver (Cleansed)] ➔ [Gold (Star Schema)] ➔ [dbt Transformation]
+Source Data ➔ Bronze (Raw) ➔ Silver (Cleansed) ➔ Gold (Star Schema) ➔ dbt Transformation ➔ Warehouse
 
 ## Source Data
 The source data is the flight data has been divide into 4 parts
@@ -21,6 +21,7 @@ The source data is the flight data has been divide into 4 parts
 
 ## Bronze Layer
 - Call the data Incrementally and One Click get all
+- Autoloader
 
 ## Silver Layer
 - Clean the data, upsert
@@ -30,10 +31,11 @@ The source data is the flight data has been divide into 4 parts
 - Make the create the surrogate key specifically
 
 ## Gold Layer Part Fact
-- Connect every dim and upsert
+- Connect every dim and upsert, Star Schema
 
 ## Apply DBT
 In the last part of the process is to connect with the DBT (which is struggle a lot)
+To Warehouse
 
 ##
 
@@ -48,5 +50,6 @@ In the last part of the process is to connect with the DBT (which is struggle a 
 ## Note
 This project is use the reference from video on youtube as the guideline of this project.
 The main purpose of this project is to learning the method that Data Engineer use to achieve the purpose of prepare the data to the data team (Data Science, Data Analysis, etc.)
+
 After this project is achieved, I have learn a lot about the approach that Data Engineering have been used in the present after the previous project that I working on the Simple Lakehouse that didn't have a challenge on the incremental data and SCD Type I that appear on this project. In addition, I have learned the new tools called **DBT** that will be the transition to create endpoint for Analysis purpose.
 
