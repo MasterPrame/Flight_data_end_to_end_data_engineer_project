@@ -1,30 +1,39 @@
-# Flight_data_end_to_end_data_engineer_project **Draft 
+# Flight_data_end_to_end_data_engineer_project
+
 Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and Unity Catalog. Developing a dynamic Medallion Architecture with automated data quality gates and incremental loading.
 
 ## Technologies
 
 * **Cloud Data Platform:** Databricks (PySpark, Databricks SQL)
-* **Data Transformation & Modeling:** dbt Cloud (SQL, Jinja)
+* **Data Transformation & Modeling:** dbt Cloud (SQL)
 * **Version Control:** GitHub
-
-* **Storage / Lakehouse:** Delta Lake (Bronze, Silver, Gold Layers)
-* **Data Architecture:** Medallion Architecture, Kimball Star Schema
 
 # Process Breakdown 
 
 [Source Data] ➔ [Bronze (Raw)] ➔ [Silver (Cleansed)] ➔ [Gold (Star Schema)] ➔ [dbt Transformation]
 
 ## Source Data
+The source data is the flight data has been divide into 4 parts
+1. fact_bookings
+2. dim_airports
+3. dim_flights
+4. dim_passengers
 
 ## Bronze Layer
+- Call the data Incrementally and One Click get all
 
 ## Silver Layer
+- Clean the data, upsert
+- Prepare for the first time data coming
 
 ## Gold Layer Part Dimension
+- Make the create the surrogate key specifically
 
 ## Gold Layer Part Fact
+- Connect every dim and upsert
 
 ## Apply DBT
+In the last part of the process is to connect with the DBT (which is struggle a lot)
 
 ##
 
