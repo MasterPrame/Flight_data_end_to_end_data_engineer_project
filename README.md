@@ -7,7 +7,7 @@ Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and
 * **Data Transformation & Modeling:** dbt Cloud (SQL, Jinja)
 * **Version Control:** GitHub
 
-* * **Storage / Lakehouse:** Delta Lake (Bronze, Silver, Gold Layers)
+* **Storage / Lakehouse:** Delta Lake (Bronze, Silver, Gold Layers)
 * **Data Architecture:** Medallion Architecture, Kimball Star Schema
 
 # Process Breakdown 
@@ -39,5 +39,5 @@ Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and
 ## Note
 This project is use the reference from video on youtube as the guideline of this project.
 The main purpose of this project is to learning the method that Data Engineer use to achieve the purpose of prepare the data to the data team (Data Science, Data Analysis, etc.)
-After this project is achieved, I have learn a lot about the approach that Data Engineering have been used in the present after the previous project that I working on the Simple Lakehouse that didn't have a challenge on the incremental data and SCD Type I that appear on this project. In addition, I have learned the new tools called DBT that will be the transition to create endpoint for Analysis purpose.
+After this project is achieved, I have learn a lot about the approach that Data Engineering have been used in the present after the previous project that I working on the Simple Lakehouse that didn't have a challenge on the incremental data and SCD Type I that appear on this project. In addition, I have learned the new tools called **DBT** that will be the transition to create endpoint for Analysis purpose.
 
