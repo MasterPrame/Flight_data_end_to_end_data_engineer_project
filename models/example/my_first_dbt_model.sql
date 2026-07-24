@@ -9,16 +9,19 @@
 
 {{ config(materialized='table') }}
 
-with source_data as (
+WITH parent_query AS
+(SELECT F.amount, D.country
+FROM 
+    dataengineerflightproject.gold.fact_bookings AS F
+LEFT JOIN
+    dataengineerflightproject.gold.dim_airports AS D
+ON 
+    F.dim_airports_key = D.dim_airports_key)
 
-    select 1 as id
-    union all
-    select null as id
+SELECT country, sum(amount) AS total_amount 
+FROM parent_query
+GROUP BY country
 
-)
-
-select *
-from source_data
 
 /*
     Uncomment the line below to remove records with null `id` values
