@@ -5,7 +5,7 @@ Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and
 ## Technologies
 
 * **Cloud Data Platform:** Databricks (PySpark, Databricks SQL)
-* **Data Transformation & Modeling:** dbt Cloud (SQL)
+* **Data Transformation:** dbt Cloud (SQL)
 * **Version Control:** GitHub
 
 # Process Breakdown 
@@ -13,40 +13,42 @@ Databricks Flight Data Pipeline using Lakeflow Pipelines, PySpark Streaming, and
 Source Data ➔ Bronze (Raw) ➔ Silver (Cleansed) ➔ Gold (Star Schema) ➔ dbt Transformation ➔ Warehouse
 
 ## Source Data
-The source data is the flight data has been divide into 4 portions
+The source data is the flight data has been divide into 4 parts
 1. fact_bookings
 2. dim_airports
 3. dim_flights
 4. dim_passengers
 
-Each of the file have 3 different variant
+Each of the file have 3 different variant for testing the dynamic approach
 - Normal
-- Incremental
-- Slowly Changing Dimension
+- Incremental (end with _incremental)
+- Slowly Changing Dimension (end with _scd)
 
 ## Bronze Layer
-- Create the notebook
-- Using Autoloader method to pull the data from raw 
+Use only 2 notebook for the Incremental Data Ingestion process to bronze layer
+1. BronzeLayer - Setup for load / append multiple data source in the bronze layer to the delta table.
+2. SrcParamenter - Use to keep the parameter for the BronzeLayer multiple data ingestion process in the Bronze_Ingestion Job with Loop over function. 
 
 ## Silver Layer
-- Clean the data, upsert
-- Prepare for the first time data coming
-- Using Python Pipeline
+Using Silver_DLT.py as the script for cleaning the dirty data in the delta table and support slowly changing dimension (type I) with **dlt** package and add modified date for data integrity.
+
+This script is use in the pipeline runs feature in the Databricks to be able to watch the process with the mapping of the process.
 
 ## Gold Layer Part Dimension
-- Make the create the surrogate key specifically
-- Update Date
-- Lastload Date
+Using 1 Notebook for all of the dimension delta table by using the parameter for each table 
+- Call a last load date
+- Detect Initial Load --> Pseudo Table
+- Creating Join Condition from key_col parameter
+- Seperate between Old Data and New Data by detect the surrogate_key
+- Add a new surrogate key to the new data table
+- Join and Upsert
 
 ## Gold Layer Part Fact
-- Connect every dim and upsert, Star Schema
-- Lastload Date
+Also use 1 notebook in this time but need to simplify the surrogate key in the fact table that need to connect with the dimensions for create star schema structure.
 
 ## Apply DBT
 After the gold layer data have been loaded, Everyone can use DBT for query the gold layer table to a specific query result for the Business Question and send the result to Warehouse.
 To Warehouse
-
-##
 
 ## Acknowledgements
 
