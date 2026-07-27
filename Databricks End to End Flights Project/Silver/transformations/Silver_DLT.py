@@ -151,9 +151,9 @@ dlt.create_auto_cdc_flow(
 )
 def silver_business_view():
     df = dlt.readStream("silver_bookings")\
-        .join(dlt.readStream("silver_flights").drop("modified_date"), ["flight_id"])\
-        .join(dlt.readStream("silver_passengers").drop("modified_date"), ["passenger_id"])\
-        .join(dlt.readStream("silver_airports").drop("modified_date"), ["airport_id"])
+        .join(dlt.read("silver_flights").drop("modified_date"), ["flight_id"])\
+        .join(dlt.read("silver_passengers").drop("modified_date"), ["passenger_id"])\
+        .join(dlt.read("silver_airports").drop("modified_date"), ["airport_id"])
 
     return df
 
